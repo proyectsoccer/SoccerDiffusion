@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+
+<!-- HERO PRINCIPAL UNIFICADO -->
+<section class="hero">
+    <h1>About Us</h1>
+    <p>
+        We are a multidisciplinary team of students from the <strong>Universitat Politècnica de València</strong> combining football passion with scientific precision.
+        Our work uses <strong>fractional Brownian motion</strong>, <em>physics-informed modeling</em>, and <em>machine learning</em> to uncover hidden patterns in the beautiful game.
+    </p>
+    <p>
+        Through synthetic data generation, Hurst exponent analysis, and advanced predictive models, we’ve created a tool that provides coaches and analysts with a new lens 
+        to understand, compare, and improve tactical approaches.
+    </p>
+    
+    <h1 style="margin-top: 3rem;">We live and breathe football</h1>
+    <p>
+        Before we were data scientists, we were fans. We’ve been watching football at home since before we could even spell “offside”.
+        Nowadays, we average <strong>at least 7 matches a week</strong>, analyzing plays, arguing over tactics, and enjoying every second of it.
+        A big part of our team supports one of our city’s teams with serious dedication — some might say we take it a bit too personally.
+        This project is the natural result of blending our <strong>technical background</strong> with our <strong>obsession for the game</strong>.
+    </p>
+</section>
+
+<!-- CARRUSEL DE FOTOS/VÍDEOS CON TÍTULO EN FORMATO HERO -->
+<section class="hero" style="text-align: center; padding-top: 3rem;">
+    <h2>Football is life!</h2>
+</section>
+
+<section class="carousel" style="max-width: 800px; margin: 1rem auto 3rem auto; text-align: center;">
+
+    <!-- Título estilo hero -->
+    <div style="padding: 2rem 1rem 1rem 1rem;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: #0d1b2a; margin-bottom: 0.5rem;">Living Football, Every Day</h2>
+        
+    </div>
+
+    <div class="carousel-container" style="position: relative; overflow: hidden;">
+        <div class="carousel-track" style="display: flex; transition: transform 0.5s ease;">
+            <!-- Imagen 1 -->
+            <!-- Imagen 1 -->
+<img src="{{ url_for('static', filename='img/leganes.jpeg') }}" alt="Enjoying football 1" class="carousel-item focus-bottom">
+
+<!-- Imagen 2 -->
+<img src="{{ url_for('static', filename='img/final_copa.jpg') }}" alt="Enjoying football 2" class="carousel-item">
+
+<!-- Vídeo -->
+<video controls class="carousel-item">
+    <source src="{{ url_for('static', filename='video/valencia_ale.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+        </div>
+
+        <!-- Flechas -->
+        <button class="carousel-button prev" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 2rem;">&#10094;</button>
+        <button class="carousel-button next" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 2rem;">&#10095;</button>
+    </div>
+</section>
+
+
+<script>
+// Carrusel simple en JS
+const track = document.querySelector('.carousel-track');
+const prevBtn = document.querySelector('.carousel-button.prev');
+const nextBtn = document.querySelector('.carousel-button.next');
+let index = 0;
+
+prevBtn.addEventListener('click', () => {
+    index = Math.max(index - 1, 0);
+    track.style.transform = `translateX(-${index * 100}%)`;
+});
+
+nextBtn.addEventListener('click', () => {
+    const totalItems = track.children.length;
+    index = Math.min(index + 1, totalItems - 1);
+    track.style.transform = `translateX(-${index * 100}%)`;
+});
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+<!-- FRASE PRINCIPAL -->
+<section class="hero">
+    <h1>FOOTBALL IS PASSION... AND TACTIC</h1>
+    <p class="subtext">What if one letter could decode a team's playing style? Discover the power of 'H' in football.</p>
+</section>
+
+<!-- IMÁGENES EN FILA -->
+<section class="image-row three-images">
+    <img src="{{ url_for('static', filename='img/tactica.jpg') }}" alt="Imagen 1">
+    <img src="{{ url_for('static', filename='img/entrenador.jpg') }}" alt="Imagen 2">
+    <img src="{{ url_for('static', filename='img/amunt_valencians.jpg') }}" alt="Imagen 3">
+</section>
+<!-- Segunda FRASE PRINCIPAL -->
+<section class="hero">
+    <h1>What is important in a football match?</h1>
+    <p class="subtext">
+        How does a soccer team's playing style change when it concedes a goal? And when it scores? Do high pressing, red cards, playing time, system changes, tackles, shots, etc. affect the way each soccer team moves the ball around the field?
+  </p>
+    <p class="subtext">We have the answer to all these questions and many more!</p>
+</section>
+
+<!-- BLOQUES CON ACCESO A OTRAS PÁGINAS -->
+<section class="actions">
+    <div class="section-card">
+        <h2>Products</h2>
+        <p>Explore our models and results</p>
+        <a href="{{ url_for('products') }}" class="btn">Go to  Products</a>
+    </div>
+
+    <div class="section-card">
+        <h2>Use cases</h2>
+        <p>See how this model can be applied to tactical analysis in football</p>
+        <a href="{{ url_for('use_cases') }}" class="btn">Go to  Use Cases</a>
+    </div>
+
+    <div class="section-card">
+        <h2>About us</h2>
+        <p>Find out who we are and why we did this</p>
+        <a href="{{ url_for('about_us') }}" class="btn">Go to About Us</a>
+    </div>
+</section>
+
+{% endblock %}
+

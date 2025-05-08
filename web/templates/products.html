@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block title %}Products{% endblock %}
+
+{% block content %}
+
+<style>
+    .no-bullets {
+        list-style-type: none;
+        padding-left: 0;
+        margin-left: 0;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1em;
+        margin-bottom: 2em;
+    }
+    th, td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ccc;
+    }
+    th {
+        background-color: #f0f0f0;
+    }
+</style>
+
+<section class="hero">
+    <h1>Modelling Football with Fractional Brownian Motion</h1>
+    <p>
+        In this project, we applied a classical mathematical model — <strong>Brownian motion</strong> — to football, aiming to understand and predict how the ball moves during possessions.
+        We generated over <strong>50,000 synthetic possessions</strong> using <strong>fractional Brownian motion</strong>, adjusting the <em>Hurst exponent (H)</em>, which quantifies movement patterns from chaotic to structured.
+    </p>
+    <p>
+        Machine learning models were trained on these synthetic sequences to predict H using features like distance, duration, speed, and angles. Once validated, they were applied to real matches to analyze playing styles and tactical behavior.
+    </p>
+</section>
+
+<section class="image-showcase">
+    <div class="image-block">
+        <h2>Visualizing Possession Styles with H</h2>
+        <p>We observed distinct patterns for different H values:</p>
+        <div class="image-block">
+            <h3>Chaotic Possession (H ≈ 0.23)</h3>
+            <img src="{{ url_for('static', filename='img/posesion_H_0.23.png') }}" alt="Chaotic Possession">
+        </div>
+        <div class="image-block">
+            <h3>Controlled Possession (H ≈ 0.96)</h3>
+            <img src="{{ url_for('static', filename='img/posesion_H_0.96.png') }}" alt="Controlled Possession">
+        </div>
+        <div class="image-block">
+            <h3>Histogram of H Values (Real Data)</h3>
+            <p>Most possessions fall between 0.6 and 1.0 due to the exclusion of short, isolated sequences like corners or throw-ins.</p>
+            <img src="{{ url_for('static', filename='img/histograma.jpg') }}" alt="H Value Distribution">
+        </div>
+    </div>
+</section>
+
+<section class="hero">
+    <h2> Impact of Match Events on Hurst Exponent (H)</h2>
+    <p>
+        To explore how match events affect possession dynamics, we analyzed the average change in H (∆H) before and after:
+    </p>
+    <ul class="no-bullets">
+        <li>• Goals scored and conceded</li>
+        <li>• Red cards (for and against)</li>
+        <li>• Substitutions</li>
+    </ul>
+    <p>
+        ∆H was computed by comparing the mean H of possessions before vs. after each event, helping us understand whether they disrupt or stabilize ball movement.
+    </p>
+
+    <h3>Figure: Average Change in H after Key Events</h3>
+    <img src="{{ url_for('static', filename='img/delta_events.png') }}" alt="Delta H After Events">
+
+    <ul class="no-bullets">
+        <li><strong>Goals in favor:</strong> ∆H = +0.002 → minimal impact</li>
+        <li><strong>Goals conceded:</strong> ∆H = −0.006 → minimal impact</li>
+        <li><strong>Red card received:</strong> ∆H = −0.112 → major disruption and randomness</li>
+        <li><strong>Red card in favor:</strong> ∆H = +0.066 → improved possession control</li>
+        <li><strong>Substitutions:</strong> ∆H = +0.005 → negligible short-term effect</li>
+    </ul>
+
+    <p>
+        The sharp drop after a red card against is the most evident, suggesting tactical breakdown. However, matches often stabilize later, with H recovering to previous levels.
+    </p>
+
+    <h3>Figure: Hurst Exponent Evolution in a Match with a Red Card</h3>
+    <img src="{{ url_for('static', filename='img/evolucion_roja.png') }}" alt="Evolution of H After Red Card">
+
+    <p>
+        After the red card, H drops sharply, reflecting disorganization. Over time, it rises again, showing regained structure. This aligns with the low correlation (r = −0.001) for “red card against before.”
+    </p>
+
+    <h3>Correlation Table: Contextual Events vs. Hurst Exponent</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Feature</td>
+                <td>Correlation with H</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Under pressure actions</td>
+                <td>+0.67</td>
+            </tr>
+            <tr>
+                <td>Goals scored </td>
+                <td>+0.026</td>
+            </tr>
+            <tr>
+                <td>Goals conceded</td>
+                <td>+0.002</td>
+            </tr>
+            <tr>
+                <td>Red cards in favor</td>
+                <td>+0.006</td>
+            </tr>
+            <tr>
+                <td>Red cards against</td>
+                <td>−0.001</td>
+            </tr>
+            <tr>
+                <td>Substitution</td>
+                <td>+0.021</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        Only the pressure variable shows a strong linear correlation with H. Other contextual variables have negligible effects on possession structure when measured via the Hurst exponent.
+    </p>
+</section>
+
+<section class="hero">
+    <h2>3.3 Correlation with Defensive Pressure Variables</h2>
+    <p>
+        We further studied how H correlates with pressure-specific metrics:
+    </p>
+    <ul class="no-bullets">
+        <li>• Under pressure actions — actions executed under defensive pressure</li>
+        <li>• Pression percentage — percentage of actions under pressure</li>
+        <li>• Pressure events — total pressure events during possessions</li>
+    </ul>
+
+    <h3>Figure: Correlation Matrix Between H and Pressure Variables</h3>
+    <img src="{{ url_for('static', filename='img/pressing_correlation.png') }}" alt="Correlation with Pressure Variables">
+
+    <p>Highlights:</p>
+    <ul class="no-bullets">
+        <li><strong>Pressure events:</strong> r = −0.89 → strong negative correlation</li>
+        <li><strong>Under pressure actions:</strong> negative correlation</li>
+        <li><strong>Pression percentage:</strong> negative correlation</li>
+    </ul>
+
+    <p>
+        These results confirm that pressing intensity disrupts ball circulation. H decreases significantly under pressure, capturing possession disorder in a quantitative way.
+    </p>
+</section>
+
+<section class="hero">
+    <p>
+        <strong>Want to analyze your own team?</strong> Provide us with tracking or event data, and we can evaluate how your playing style adapts to pressure, red cards, or goals.
+        Our insights can reveal how opponents behave under stress — offering tactical advantages before crucial matches.
+    </p>
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Use Cases{% endblock %}
+
+{% block content %}
+
+<!-- SECTION INTRO IN HERO STYLE -->
+<section class="hero" >
+    <h1 style="text-align: center;">Real-World Applications</h1>
+    <p style="text-align: left;">
+        Our model offers practical value for <strong>coaching staff, analysts, and professional football teams</strong>. 
+        By measuring ball movement patterns through the <em>Hurst exponent</em>, we provide tools to:
+    </p>
+
+    <ul style="margin-top: 0.5rem; padding-left: 1.2rem;text-align: left;"">
+        <li>Identify when your team maintains control versus when possession becomes disorganized.</li>
+        <li>Spot match phases where team structure breaks down or becomes too predictable.</li>
+        <li>Understand tactical responses to pressing, goals, or system changes.</li>
+        <li>Optimize training to align with desired possession styles and tempo control.</li>
+        <li>Enhance scouting reports or performance analysis with a deeper tactical layer.</li>
+    </ul>
+
+    <p style="margin-top: 1rem;text-align: left;">
+        Moreover, <strong>sports tech companies</strong> and startups working on predictive analytics or tactical visualization can leverage our model to create next-generation tools for football intelligence.
+    </p>
+</section>
+
+
+<!-- VIDEO SHOWCASE CENTERED -->
+<section class="video-showcase" style="display: flex; flex-direction: column; align-items: center; gap: 2rem; padding-bottom: 2rem;">
+    <div class="video-block" style="text-align: center;">
+        <h2>Guardiola after realizing their Hurst exponent is too low</h2>
+        <video controls style="width: 100%; max-width: 720px;">
+            <source src="{{ url_for('static', filename='video/guardiola.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.95rem;">
+            (A humorous interpretation of how elite coaches might react to chaotic ball movement.)
+        </p>
+    </div>
+    
+
+    <div class="video-block" style="text-align: center;">
+        <h2>José Bordalás when is asked about fractional brownian motion</h2>
+        <video controls style="width: 100%; max-width: 720px;">
+            <source src="{{ url_for('static', filename='video/bordalas.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.95rem;">
+            (We hope all the coaches are as open-minded as José Bordalás.)
+        </p>
+    </div>
+
+    
+</section>
+<!-- CLOSING REMARKS -->
+<section class="hero" >
+    <h2 style="text-align: center;">A Tool Built for the Real Game</h2>
+    <p>
+        While we include humorous examples to connect with football culture, the foundation of our work is built on 
+        rigorous data analysis, mathematical modeling and real-world relevance.
+    </p>
+    <p>
+        By translating possession dynamics into measurable indicators like the Hurst exponent, our project opens the door 
+        to <strong>objective tactical diagnostics</strong> and <strong>actionable insights</strong> for coaches, analysts, and data science teams in professional clubs.
+    </p>
+    <p>
+        This project is not just a theoretical exercise — it's a tool designed to integrate with modern football workflows, 
+        helping teams gain a competitive edge through intelligent interpretation of the game.
+    </p>
+</section>
+
+{% endblock %}
