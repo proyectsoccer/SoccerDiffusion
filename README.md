@@ -14,7 +14,7 @@ The contents of this repository are organized as follows:
 │ ├── StatsBomb PDFs/ # Official data documentation
 │ ├── M1-SOCCERDIFFUSION.pdf; # Link to our initial presentation (milestone 1)
 │ ├── M2-SOCCER DIFFUSION.pdf # Milestone 2 report
-│ └── Final_report.pdf # Final project write-up
+│ └── Final_memory.pdf # Final project write-up
 ├── web/ # Full website code (HTML, CSS, Python backend)
 └── README.md # This file 
 
@@ -30,17 +30,17 @@ Defensive pressure
 Web Visualization: A lightweight website was built to showcase project results and interactive visualizations.
 
 💻 How to Run the Project
-1. Clone the repository:```bash
+1. Clone the repository:
    git clone https://github.com/yourusername/SoccerDiffusion.git
    cd SoccerDiffusion
 2. Install required dependencies:
    pip install -r requirements.txt
 3. Explore the notebooks in /jupyter notebooks:
-   trasteo
-   trasteo2
-   trasteo3
+   pruebas
+   pruebas2
+   pruebas3
    artificial_data
-   final_code
+   codigo_proyecto
 
 Run the website (optional, requires Flask):
 cd web
@@ -54,20 +54,14 @@ Interactive possession visualizations
 
 Match-level insights based on estimated $H$ values
 
-🔗 [Live demo link – to be inserted]
 📘 Documentation
 Detailed explanations, methodology, and evaluations can be found in:
 
-/Information/M2_report.pdf
+/Information/M1-SOCCERDIFFUSION.pdf
 
-/Information/Final_report.pdf
+/Information/M2-SOCCER DIFFUSION.pdf
 
-For a quick overview, check our original Prezi presentation.
-
-🎯 Goals and Impact
-SDG 4 – Quality Education: Encourages interdisciplinary learning in data science, mathematics, and sport.
-
-SDG 8 – Decent Work and Economic Growth: Opens new opportunities in sports analytics and innovation through open data.
+/Information/Final_memory.pdf
 
 📄 License
 This project is licensed under the MIT License. Feel free to reuse and adapt for research or educational purposes.
